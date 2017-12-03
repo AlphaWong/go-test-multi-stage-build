@@ -4,11 +4,13 @@ FROM golang:1.9 as build
 WORKDIR /go/src/app
 COPY . .
 
-RUN CGO_ENABLE=0 go build \
+RUN CGO_ENABLE=0 GOOS=linux \
+  go build \
   -tags netgo \
+  -installsuffix netgo,cgo \
   -v -a \
-  -o app \
-  -ldflags '-extldflags "-static"' && \
+  -ldflags '-extldflags "-static"' \ 
+  -o app && \
   mv ./app /go/bin/app
 
 # RUN go-wrapper download   # "go get -d -v ./..."
