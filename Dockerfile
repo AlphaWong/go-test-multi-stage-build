@@ -17,7 +17,8 @@ COPY . .
 # End section
 # Reference https://github.com/GoogleCloudPlatform/distroless
 RUN go get -u github.com/golang/dep/cmd/dep
-RUN dep ensure
+RUN dep ensure -v -vendor-only
+
 
 # https://golang.org/cmd/go/#hdr-Compile_packages_and_dependencies
 # More go build document
@@ -28,8 +29,10 @@ RUN CGO_ENABLE=0 GOOS=linux \
   -installsuffix netgo,cgo \
   -v -a \
   -ldflags '-s -w -extldflags "-static"' \ 
-  -o app && \
-  upx --ultra-brute -qq app && \
+  -o app
+
+# Compress go binary
+RUN upx --ultra-brute -qq app && \
   upx -t app && \
   mv ./app /go/bin/app
 
