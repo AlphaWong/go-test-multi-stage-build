@@ -21,3 +21,6 @@ https://github.com/GoogleCloudPlatform/distroless
 
 # About go dep
 https://github.com/golang/dep
+
+# Images compare ( size )
+![docker images size](https://i.imgur.com/Ohr7kmJ.png)
