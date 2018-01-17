@@ -19,6 +19,9 @@ COPY . .
 RUN go get -u github.com/golang/dep/cmd/dep
 RUN dep ensure -v -vendor-only
 
+# Check syntax error
+RUN go fmt ./... && \
+  go tool vet .
 
 # https://golang.org/cmd/go/#hdr-Compile_packages_and_dependencies
 # More go build document
