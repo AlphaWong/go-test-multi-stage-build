@@ -34,7 +34,8 @@ RUN CGO_ENABLE=0 GOOS=linux \
   -o app
 
 # Compress go binary
-RUN upx --ultra-brute -qq app && \
+# https://linux.die.net/man/1/upx
+RUN upx -7 -qq app && \
   upx -t app && \
   mv ./app /go/bin/app
 
