@@ -13,7 +13,7 @@ Practice how to enable multi stage build in golang.
 # Expected result
 ![result](https://i.imgur.com/VURu2Zs.png)
 
-# Vender file handle
+# Vendor file handle
 https://ops.tips/blog/dockerfile-golang/
 
 # Google image reference
