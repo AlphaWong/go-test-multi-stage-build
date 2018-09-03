@@ -7,6 +7,8 @@ RUN apk add --no-cache git build-base && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk add --no-cache upx
 
+ENV GO111MODULE=on
+
 WORKDIR /go/src/app
 COPY . .
 
@@ -16,8 +18,8 @@ COPY . .
 # RUN go-wrapper install
 # End section
 # Reference https://github.com/GoogleCloudPlatform/distroless
-RUN go get -u github.com/golang/dep/cmd/dep
-RUN dep ensure -v -vendor-only
+# RUN go get -u github.com/golang/dep/cmd/dep
+# RUN dep ensure -v -vendor-only
 
 # Check syntax error
 RUN go fmt ./...
