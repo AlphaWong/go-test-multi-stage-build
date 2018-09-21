@@ -11,6 +11,21 @@ Practice how to enable multi stage build in golang.
 # Expected result
 ![result](https://i.imgur.com/VURu2Zs.png)
 
+# Importance
+Current upx in `golang:1.11.0` and `debian` native is broken. You beed to download the latest version of upx (>=v3.95)
+Here is some sample code
+```dockerfile
+RUN apt-get -qq update && apt-get -qq install wget xz-utils
+RUN wget -P /tmp/ https://github.com/upx/upx/releases/download/v3.95/upx-3.95-amd64_linux.tar.xz
+RUN tar xvf /tmp/upx-3.95-amd64_linux.tar.xz -C /tmp
+RUN mv /tmp/upx-3.95-amd64_linux/upx /go/bin
+
+RUN upx --ultra-brute -qq app && \
+  upx -t app && \
+  mv ./app /go/bin/app
+
+```
+
 # Vendor file handle
 https://ops.tips/blog/dockerfile-golang/
 
