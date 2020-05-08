@@ -71,6 +71,10 @@ gcr.io/cloud-marketplace-containers/google/debian9   latest              db73c6a
 launcher.gcr.io/google/debian9                       latest              db73c6a8f103        48 years ago        103MB
 ```
 
+# bitnami/minideb
+```
+install_packages ca-certificates build-essential
+```
 
 # go mod location
 The build cache ($GOCACHE, defaulting to $HOME/.cache/go-build) is for storing recent compilation results, so that if you need to do that exact compilation again, you can just reuse the file. The build cache holds entries that are like “if you run this exact compiler on these exact inputs. this is the output you’d get.” If the answer is not in the cache, your build uses a little more CPU to run the compiler nstead of reusing the output. But you are guaranteed to be able to run the compiler instead, since you have the exact inputs and the compiler binary (or else you couldn’t even look up the answer in the cache).
